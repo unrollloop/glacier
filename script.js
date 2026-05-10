@@ -1,6 +1,26 @@
 // script.js for Glacier landing page
 
 document.addEventListener('DOMContentLoaded', function() {
+  async function loadTurnstileKey() {
+    try {
+      const response = await fetch('/.netlify/functions/getTurnstileKey');
+      if (!response.ok) {
+        throw new Error('Unable to fetch Turnstile key');
+      }
+      const payload = await response.json();
+      if (window.turnstile && payload.siteKey) {
+        window.turnstile.render('#turnstile-container', {
+          sitekey: payload.siteKey,
+          theme: 'dark'
+        });
+      }
+    } catch (error) {
+      console.error('Turnstile initialization failed:', error);
+    }
+  }
+
+  loadTurnstileKey();
+
   // Form submission
   const form = document.getElementById('waitlistForm');
   if (form) {
@@ -12,7 +32,8 @@ document.addEventListener('DOMContentLoaded', function() {
         name: formData.get('name'),
         email: formData.get('email'),
         storage_needed: formData.get('storage_needed'),
-        timeline: formData.get('timeline')
+        timeline: formData.get('timeline'),
+        'cf-turnstile-response': formData.get('cf-turnstile-response')
       };
 
       try {
