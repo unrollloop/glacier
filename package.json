@@ -1,0 +1,16 @@
+{
+  "name": "glacier-landing-page",
+  "version": "1.0.0",
+  "description": "Landing page for Glacier cloud storage",
+  "main": "index.js",
+  "scripts": {
+    "dev": "echo 'No dev script'",
+    "build": "echo 'No build script'"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.39.0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
