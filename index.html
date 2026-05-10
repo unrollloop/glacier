@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Glacier - Affordable Cloud Storage for Mac Users</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'glacier-bg': '#05070B',
+            'glacier-card': 'rgba(255,255,255,0.04)',
+            'glacier-border': 'rgba(255,255,255,0.08)',
+            'glacier-accent': '#7DD3FC',
+            'glacier-text': '#F8FAFC',
+            'glacier-muted': '#94A3B8',
+          },
+          fontFamily: {
+            'inter': ['Inter', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #05070B;
+      color: #F8FAFC;
+    }
+    .glass {
+      backdrop-filter: blur(10px);
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .glow {
+      box-shadow: 0 0 20px rgba(125, 211, 252, 0.3);
+    }
+    .fade-in {
+      animation: fadeIn 1s ease-in;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body class="bg-glacier-bg text-glacier-text">
+  <!-- Navbar -->
+  <nav class="fixed top-0 w-full bg-glacier-bg/80 backdrop-blur-md z-50 border-b border-glacier-border">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center py-4">
+        <div class="flex items-center">
+          <h1 class="text-2xl font-bold text-glacier-accent">Glacier</h1>
+        </div>
+        <div class="hidden md:flex space-x-8">
+          <a href="#features" class="text-glacier-text hover:text-glacier-accent transition">Features</a>
+          <a href="#pricing" class="text-glacier-text hover:text-glacier-accent transition">Pricing</a>
+          <a href="#comparison" class="text-glacier-text hover:text-glacier-accent transition">Comparison</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="pt-20 pb-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-radial from-glacier-accent/10 to-transparent"></div>
+    <div class="max-w-7xl mx-auto relative">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div class="fade-in">
+          <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+            Expand Your Mac Storage Without Paying Apple Prices
+          </h1>
+          <p class="text-xl text-glacier-muted mb-8">
+            Glacier gives Mac users affordable private cloud storage from 250GB to 5TB using secure NAS-powered infrastructure.
+          </p>
+          <div class="flex flex-wrap gap-4 mb-8">
+            <span class="px-4 py-2 bg-glacier-card rounded-full text-sm">250GB — ₹149/mo</span>
+            <span class="px-4 py-2 bg-glacier-card rounded-full text-sm">512GB — ₹249/mo</span>
+            <span class="px-4 py-2 bg-glacier-card rounded-full text-sm">1TB — ₹499/mo</span>
+            <span class="px-4 py-2 bg-glacier-card rounded-full text-sm">2TB — ₹899/mo</span>
+            <span class="px-4 py-2 bg-glacier-card rounded-full text-sm">5TB — ₹2199/mo</span>
+          </div>
+        </div>
+        <div class="fade-in">
+          <div class="glass p-8 rounded-2xl glow">
+            <h3 class="text-2xl font-semibold mb-6 text-center">Join the Waitlist</h3>
+            <form id="waitlistForm" class="space-y-4">
+              <div>
+                <label class="block text-sm font-medium mb-2">Full Name</label>
+                <input type="text" name="name" required class="w-full px-4 py-3 bg-glacier-bg border border-glacier-border rounded-lg focus:ring-2 focus:ring-glacier-accent focus:border-transparent">
+              </div>
+              <div>
+                <label class="block text-sm font-medium mb-2">Email Address</label>
+                <input type="email" name="email" required class="w-full px-4 py-3 bg-glacier-bg border border-glacier-border rounded-lg focus:ring-2 focus:ring-glacier-accent focus:border-transparent">
+              </div>
+              <div>
+                <label class="block text-sm font-medium mb-2">Storage Needed</label>
+                <select name="storage_needed" required class="w-full px-4 py-3 bg-glacier-bg border border-glacier-border rounded-lg focus:ring-2 focus:ring-glacier-accent focus:border-transparent">
+                  <option value="250GB">250GB</option>
+                  <option value="512GB">512GB</option>
+                  <option value="1TB">1TB</option>
+                  <option value="2TB">2TB</option>
+                  <option value="5TB">5TB</option>
+                  <option value="Custom">Custom</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-sm font-medium mb-2">When do you need it?</label>
+                <select name="timeline" required class="w-full px-4 py-3 bg-glacier-bg border border-glacier-border rounded-lg focus:ring-2 focus:ring-glacier-accent focus:border-transparent">
+                  <option value="ASAP">ASAP</option>
+                  <option value="This Week">This Week</option>
+                  <option value="This Month">This Month</option>
+                  <option value="Just Exploring">Just Exploring</option>
+                </select>
+              </div>
+              <button type="submit" class="w-full bg-glacier-accent text-glacier-bg font-semibold py-3 px-6 rounded-lg hover:bg-opacity-90 transition glow">
+                Reserve Your Storage
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="py-16 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Why Choose Glacier</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="glass p-6 rounded-xl hover:glow transition transform hover:scale-105">
+          <div class="w-12 h-12 bg-glacier-accent rounded-lg mb-4 flex items-center justify-center">
+            <svg class="w-6 h-6 text-glacier-bg" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-2">Affordable Expansion</h3>
+          <p class="text-glacier-muted">No Apple storage tax. Expand anytime without breaking the bank.</p>
+        </div>
+        <div class="glass p-6 rounded-xl hover:glow transition transform hover:scale-105">
+          <div class="w-12 h-12 bg-glacier-accent rounded-lg mb-4 flex items-center justify-center">
+            <svg class="w-6 h-6 text-glacier-bg" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M2 5a2 2 0 012-2h8a2 2 0 012 2v10a2 2 0 002 2H4a2 2 0 01-2-2V5zm3 1h6v4H5V6zm6 6H5v2h6v-2z" clip-rule="evenodd"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-2">Built for macOS</h3>
+          <p class="text-glacier-muted">Seamlessly integrates with Finder and macOS ecosystem.</p>
+        </div>
+        <div class="glass p-6 rounded-xl hover:glow transition transform hover:scale-105">
+          <div class="w-12 h-12 bg-glacier-accent rounded-lg mb-4 flex items-center justify-center">
+            <svg class="w-6 h-6 text-glacier-bg" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-2">Private & Secure</h3>
+          <p class="text-glacier-muted">Your data stays private with end-to-end encryption.</p>
+        </div>
+        <div class="glass p-6 rounded-xl hover:glow transition transform hover:scale-105">
+          <div class="w-12 h-12 bg-glacier-accent rounded-lg mb-4 flex items-center justify-center">
+            <svg class="w-6 h-6 text-glacier-bg" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-2">Remote Access</h3>
+          <p class="text-glacier-muted">Access your files from anywhere, anytime.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section id="pricing" class="py-16 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Choose Your Plan</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+        <div class="glass p-6 rounded-xl">
+          <h3 class="text-xl font-semibold mb-2">Starter</h3>
+          <p class="text-3xl font-bold text-glacier-accent mb-4">₹149<span class="text-lg">/mo</span></p>
+          <p class="text-glacier-muted">250GB Storage</p>
+        </div>
+        <div class="glass p-6 rounded-xl">
+          <h3 class="text-xl font-semibold mb-2">Essential</h3>
+          <p class="text-3xl font-bold text-glacier-accent mb-4">₹249<span class="text-lg">/mo</span></p>
+          <p class="text-glacier-muted">512GB Storage</p>
+        </div>
+        <div class="glass p-6 rounded-xl border-2 border-glacier-accent relative">
+          <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-glacier-accent text-glacier-bg px-3 py-1 rounded-full text-sm font-semibold">Most Popular</div>
+          <h3 class="text-xl font-semibold mb-2">Pro</h3>
+          <p class="text-3xl font-bold text-glacier-accent mb-4">₹499<span class="text-lg">/mo</span></p>
+          <p class="text-glacier-muted">1TB Storage</p>
+        </div>
+        <div class="glass p-6 rounded-xl">
+          <h3 class="text-xl font-semibold mb-2">Studio</h3>
+          <p class="text-3xl font-bold text-glacier-accent mb-4">₹899<span class="text-lg">/mo</span></p>
+          <p class="text-glacier-muted">2TB Storage</p>
+        </div>
+        <div class="glass p-6 rounded-xl">
+          <h3 class="text-xl font-semibold mb-2">Ultra</h3>
+          <p class="text-3xl font-bold text-glacier-accent mb-4">₹2199<span class="text-lg">/mo</span></p>
+          <p class="text-glacier-muted">5TB Storage</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- macOS Style Visual Section -->
+  <section class="py-16 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Seamless macOS Integration</h2>
+      <div class="glass p-8 rounded-2xl max-w-4xl mx-auto">
+        <div class="bg-gray-100 rounded-lg p-4 text-black">
+          <div class="flex items-center mb-4">
+            <div class="w-4 h-4 bg-red-500 rounded-full mr-2"></div>
+            <div class="w-4 h-4 bg-yellow-500 rounded-full mr-2"></div>
+            <div class="w-4 h-4 bg-green-500 rounded-full mr-2"></div>
+            <span class="ml-4 font-semibold">Finder</span>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="bg-white p-4 rounded">
+              <h4 class="font-semibold mb-2">Glacier Drive</h4>
+              <p class="text-sm text-gray-600">Available: 750GB</p>
+              <p class="text-sm text-gray-600">Used: 250GB</p>
+            </div>
+            <div class="bg-white p-4 rounded">
+              <h4 class="font-semibold mb-2">Sync Status</h4>
+              <p class="text-sm text-green-600">✓ All files synced</p>
+            </div>
+            <div class="bg-white p-4 rounded">
+              <h4 class="font-semibold mb-2">Analytics</h4>
+              <p class="text-sm text-gray-600">Photos: 120GB</p>
+              <p class="text-sm text-gray-600">Videos: 80GB</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparison Section -->
+  <section id="comparison" class="py-16 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">How Glacier Compares</h2>
+      <div class="overflow-x-auto">
+        <table class="w-full glass rounded-xl">
+          <thead>
+            <tr class="border-b border-glacier-border">
+              <th class="p-4 text-left">Feature</th>
+              <th class="p-4 text-center">Glacier</th>
+              <th class="p-4 text-center">iCloud</th>
+              <th class="p-4 text-center">External SSD</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b border-glacier-border">
+              <td class="p-4">Remote Access</td>
+              <td class="p-4 text-center text-green-400">✓</td>
+              <td class="p-4 text-center text-green-400">✓</td>
+              <td class="p-4 text-center text-red-400">✗</td>
+            </tr>
+            <tr class="border-b border-glacier-border">
+              <td class="p-4">Expandable</td>
+              <td class="p-4 text-center text-green-400">✓</td>
+              <td class="p-4 text-center text-red-400">✗</td>
+              <td class="p-4 text-center text-red-400">✗</td>
+            </tr>
+            <tr class="border-b border-glacier-border">
+              <td class="p-4">Monthly Cost</td>
+              <td class="p-4 text-center">₹149+</td>
+              <td class="p-4 text-center">$0.99/GB</td>
+              <td class="p-4 text-center">One-time</td>
+            </tr>
+            <tr class="border-b border-glacier-border">
+              <td class="p-4">macOS Optimized</td>
+              <td class="p-4 text-center text-green-400">✓</td>
+              <td class="p-4 text-center text-green-400">✓</td>
+              <td class="p-4 text-center text-yellow-400">Partial</td>
+            </tr>
+            <tr class="border-b border-glacier-border">
+              <td class="p-4">Private Storage</td>
+              <td class="p-4 text-center text-green-400">✓</td>
+              <td class="p-4 text-center text-red-400">✗</td>
+              <td class="p-4 text-center text-green-400">✓</td>
+            </tr>
+            <tr>
+              <td class="p-4">One-Time Setup</td>
+              <td class="p-4 text-center text-green-400">✓</td>
+              <td class="p-4 text-center text-green-400">✓</td>
+              <td class="p-4 text-center text-green-400">✓</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA Section -->
+  <section class="py-16 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-3xl md:text-5xl font-bold mb-6">Stop Running Out of Storage on Your Mac</h2>
+      <p class="text-xl text-glacier-muted mb-8">
+        Join Glacier early access and get launch pricing, onboarding help, and beta access.
+      </p>
+      <button class="bg-glacier-accent text-glacier-bg font-semibold py-4 px-8 rounded-lg hover:bg-opacity-90 transition glow text-lg">
+        Reserve Your Storage
+      </button>
+      <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
+        <div>
+          <p class="text-2xl font-bold text-glacier-accent">10TB+</p>
+          <p class="text-glacier-muted">reserved</p>
+        </div>
+        <div>
+          <p class="text-2xl font-bold text-glacier-accent">500+</p>
+          <p class="text-glacier-muted">early users</p>
+        </div>
+        <div>
+          <p class="text-2xl font-bold text-glacier-accent">99.9%</p>
+          <p class="text-glacier-muted">uptime target</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-8 px-4 sm:px-6 lg:px-8 border-t border-glacier-border">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <div class="mb-4 md:mb-0">
+          <h3 class="text-xl font-bold text-glacier-accent">Glacier</h3>
+          <p class="text-glacier-muted">Built for creators.</p>
+        </div>
+        <div class="flex space-x-6">
+          <a href="#" class="text-glacier-muted hover:text-glacier-accent transition">Privacy Policy</a>
+          <a href="#" class="text-glacier-muted hover:text-glacier-accent transition">Terms</a>
+          <a href="#" class="text-glacier-muted hover:text-glacier-accent transition">Support</a>
+        </div>
+      </div>
+      <div class="mt-8 text-center text-glacier-muted">
+        <p>&copy; 2024 Glacier. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
